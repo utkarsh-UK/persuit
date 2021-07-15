@@ -1,0 +1,65 @@
+.container {
+  width: 30%;
+  text-align: center;
+}
+
+.icons {
+  display: flex;
+  width: 15%;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.icons img {
+  width: 15px;
+  height: 15px;
+}
+
+.zerodha {
+  width: 200px;
+  height: 100px;
+  margin: 0;
+  filter: grayscale(100%);
+}
+
+.signup {
+  text-decoration: none;
+  color: rgb(173, 173, 173);
+  margin-bottom: 20px;
+  font-size: 0.8rem;
+}
+
+.info {
+  font-size: 0.7rem;
+  color: rgb(211, 210, 210);
+  width: 90%;
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+
+.version {
+  font-size: 0.6rem;
+  color: rgb(211, 210, 210);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* sudo selectors */
+.icons img:hover {
+  cursor: pointer;
+}
+
+/* media query */
+@media screen and (max-width: 767.98px) {
+  .container {
+    width: 100%;
+  }
+
+  .info {
+    width: 85%;
+    margin: auto;
+    margin-bottom: 10px;
+  }
+}
