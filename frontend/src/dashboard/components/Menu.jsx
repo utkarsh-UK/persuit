@@ -14,7 +14,7 @@ const Menu = () => {
       <div className={classes.menus}>
         <ul>
           <li>
-            <Link style={{ textDecoration: "none" }} to="/dashboard">
+            <Link style={{ textDecoration: "none" }} to="/">
               <p className={menuClass}>Dashboard</p>
             </Link>
           </li>
@@ -24,22 +24,22 @@ const Menu = () => {
             </Link>
           </li>
           <li>
-            <Link style={{ textDecoration: "none" }} to="/dashboard">
+            <Link style={{ textDecoration: "none" }} to="/holdings">
               <p className={menuClass}>Holdings</p>
             </Link>
           </li>
           <li>
-            <Link style={{ textDecoration: "none" }} to="/dashboard">
+            <Link style={{ textDecoration: "none" }} to="/positions">
               <p className={menuClass}>Positions</p>
             </Link>
           </li>
           <li>
-            <Link style={{ textDecoration: "none" }} to="/dashboard">
+            <Link style={{ textDecoration: "none" }} to="/funds">
               <p className={menuClass}>Funds</p>
             </Link>
           </li>
           <li>
-            <Link style={{ textDecoration: "none" }} to="/dashboard">
+            <Link style={{ textDecoration: "none" }} to="/apps">
               <p className={menuClass}>Apps</p>
             </Link>
           </li>

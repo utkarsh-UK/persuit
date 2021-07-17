@@ -1,4 +1,10 @@
 import React from "react";
+import {
+  KeyboardArrowDown,
+  KeyboardArrowUp,
+  SettingsOutlined,
+} from "@material-ui/icons";
+
 import { watchlist } from "../../core/data";
 
 import classes from "../css/WatchList.module.css";
@@ -19,12 +25,19 @@ const WatchList = () => {
 
       <ul className={classes["list"]}>
         {watchlist.map((stock, index) => (
-          <li>
+          <li key={index}>
             <div className={classes.item}>
-              <p> {stock.name} </p>
+              <p className={stock.isDown ? `${classes.down}` : `${classes.up}`}>
+                {" "}
+                {stock.name}{" "}
+              </p>
               <div className={classes["item-info"]}>
                 <span className={classes.percent}> {stock.percent} </span>
-                <span className={classes.direction}>&#10093;</span>
+                {stock.isDown ? (
+                  <KeyboardArrowDown className={classes.down} />
+                ) : (
+                  <KeyboardArrowUp className={classes.up} />
+                )}
                 <span className={classes.price}> {stock.price} </span>
               </div>
             </div>
@@ -41,7 +54,7 @@ const WatchList = () => {
           <li>5</li>
         </ul>
 
-        <p>Set</p>
+        <SettingsOutlined className={classes.settings} />
       </div>
     </div>
   );
