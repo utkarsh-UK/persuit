@@ -1,0 +1,85 @@
+.menu-container {
+  flex-basis: 68%;
+  height: 100%;
+  padding: 10px 20px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  width: 30px;
+  height: 20px;
+}
+
+.menus {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.menus ul {
+  list-style-type: none;
+}
+
+.menus li {
+  display: inline-block;
+  margin-right: 30px;
+  text-decoration: none;
+}
+
+.menu {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: rgb(70, 70, 70);
+}
+
+.menu.selected {
+  color: rgb(245, 104, 52);
+}
+
+hr {
+  border-left: 0.8px solid rgb(243, 242, 242);
+  height: 30px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-left: 20px;
+}
+
+.profile .avatar {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  position: relative;
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: rgb(221, 139, 221);
+  justify-content: center;
+  align-items: center;
+  border-radius: 100%;
+  text-align: center;
+  display: flex;
+  background: rgb(252, 229, 252);
+  margin-right: 8px;
+}
+
+.profile .username {
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+/* sudo selectors */
+
+.menu:hover {
+  color: rgb(245, 104, 52);
+}
+
+.profile:hover .username {
+  cursor: pointer;
+  color: rgb(223, 91, 43);
+}

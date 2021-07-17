@@ -6,9 +6,11 @@ import classes from "../css/Login.module.css";
 import logoImage from "../../images/logo.png";
 import AuthFooter from "../components/AuthFooter";
 
-const Login = () => {
+const Login = ({ history }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    history.push("/dashboard");
   };
 
   return (
