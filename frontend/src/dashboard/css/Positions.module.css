@@ -28,14 +28,12 @@
   text-align: left;
 }
 
-.order-table tr th:nth-child(1),
-.order-table tr th:nth-child(4) {
-  border-right: 1px solid rgb(211, 211, 211);
-}
-
-.order-table tr td:nth-child(1),
-.order-table tr td:nth-child(4) {
-  border-right: 1px solid rgb(211, 211, 211);
+.order-table tr td:first-child p {
+    background: rgb(255, 197, 197);
+    color: rgb(233, 120, 120);
+    width: 50%;
+    text-align: center;
+    border-radius: 2px;
 }
 
 .order-table tr td:last-child {

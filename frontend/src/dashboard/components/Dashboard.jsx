@@ -2,9 +2,12 @@ import React, { useEffect } from "react";
 import { Route } from "react-router-dom";
 
 import classes from "../css/Dashboard.module.css";
+import Apps from "./Apps";
+import Funds from "./Funds";
 import Holdings from "./Holdings";
 
 import Orders from "./Orders";
+import Positions from "./Positions";
 import Summary from "./Summary";
 import WatchList from "./WatchList";
 
@@ -20,9 +23,9 @@ const Dashboard = () => {
         <Route exact path="/" component={Summary} />
         <Route path="/orders" component={Orders} />
         <Route path="/holdings" component={Holdings} />
-        <Route path="/positions" component={Summary} />
-        <Route path="/funds" component={Orders} />
-        <Route path="/apps" component={Orders} />
+        <Route path="/positions" component={Positions} />
+        <Route path="/funds" component={Funds} />
+        <Route path="/apps" component={Apps} />
       </div>
     </div>
   );

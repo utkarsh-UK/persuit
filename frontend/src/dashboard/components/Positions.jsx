@@ -1,32 +1,32 @@
 import React, { Fragment, useEffect } from "react";
 
-import { holdings } from "../../core/data";
+import classes from "../css/Positions.module.css";
 
-import classes from "../css/Holdings.module.css";
+import { positions } from "../../core/data";
 
-const Holdings = () => {
-  useEffect(() => {
-    document.title = "Holdings / Persuit";
-  }, []);
+const Positions = () => {
+
+    useEffect(() => {
+        document.title = 'Positions / Persuit'
+    }, []);
 
   return (
     <Fragment>
-      <h3 className={classes.title}>Holdings ({holdings.length})</h3>
+      <h3 className={classes.title}>Positions ({positions.length})</h3>
 
       <div className={classes["order-table"]}>
         <table>
           <tr>
+            <th>Product</th>
             <th>Instrument</th>
             <th>Qty.</th>
-            <th>Avg. cost</th>
+            <th>Avg.</th>
             <th>LTP</th>
-            <th>Cur. val</th>
             <th>P&L</th>
-            <th>Net chg.</th>
-            <th>Day chg.</th>
+            <th>Chg.</th>
           </tr>
 
-          {holdings.map((stock, index) => {
+          {positions.map((stock, index) => {
             const curValue = stock.price * stock.qty;
             const isProfit = curValue - stock.avg * stock.qty >= 0.0;
             const profClass = isProfit
@@ -38,42 +38,45 @@ const Holdings = () => {
 
             return (
               <tr key={index} className={classes.item}>
+                <td>
+                  {" "}
+                  <p>{stock.product}</p>{" "}
+                </td>
                 <td>{stock.name}</td>
                 <td>{stock.qty}</td>
                 <td>{stock.avg.toFixed(2)}</td>
                 <td>{stock.price.toFixed(2)}</td>
-                <td>{curValue.toFixed(2)}</td>
                 <td className={profClass}>
                   {(curValue - stock.avg * stock.qty).toFixed(2)}
                 </td>
-                <td className={profClass}>{stock.net}</td>
                 <td className={dayClass}>{stock.day}</td>
               </tr>
             );
           })}
+
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Total</td>
+            <td>
+              {positions
+                .reduce(
+                  (prev, curr) =>
+                    prev + (curr.price * curr.qty - curr.avg * curr.qty),
+                  0
+                )
+                .toFixed(2)}
+            </td>
+
+            <td></td>
+          </tr>
         </table>
       </div>
 
-      <div className={classes.row}>
-        <div className={classes.col}>
-          <h5>
-            29,875.<span>55</span>{" "}
-          </h5>
-          <p>Total investment</p>
-        </div>
-        <div className={classes.col}>
-          <h5>
-            31,428.<span>95</span>{" "}
-          </h5>
-          <p>Current value</p>
-        </div>
-        <div className={classes.col}>
-          <h5>1,553.40 (+5.20%)</h5>
-          <p>P&L</p>
-        </div>
-      </div>
     </Fragment>
   );
 };
 
-export default Holdings;
+export default Positions;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import classes from "../css/Menu.module.css";
 
@@ -6,7 +6,14 @@ import logoImage from "../../images/logo.png";
 import { Link } from "react-router-dom";
 
 const Menu = () => {
+  const [selectedMenu, setSelectedMenu] = useState(0);
+
+  const handleMenuClick = (index) => {
+    setSelectedMenu(index);
+  };
+
   const menuClass = `${classes.menu}`;
+  const menuClassWithActive = `${classes.menu} ${classes.selected}`;
 
   return (
     <div className={classes["menu-container"]}>
@@ -14,33 +21,81 @@ const Menu = () => {
       <div className={classes.menus}>
         <ul>
           <li>
-            <Link style={{ textDecoration: "none" }} to="/">
-              <p className={menuClass}>Dashboard</p>
+            <Link
+              style={{ textDecoration: "none" }}
+              to="/"
+              onClick={() => handleMenuClick(0)}
+            >
+              <p
+                className={selectedMenu === 0 ? menuClassWithActive : menuClass}
+              >
+                Dashboard
+              </p>
             </Link>
           </li>
           <li>
-            <Link style={{ textDecoration: "none" }} to="/orders">
-              <p className={menuClass}>Orders</p>
+            <Link
+              style={{ textDecoration: "none" }}
+              to="/orders"
+              onClick={() => handleMenuClick(1)}
+            >
+              <p
+                className={selectedMenu === 1 ? menuClassWithActive : menuClass}
+              >
+                Orders
+              </p>
             </Link>
           </li>
           <li>
-            <Link style={{ textDecoration: "none" }} to="/holdings">
-              <p className={menuClass}>Holdings</p>
+            <Link
+              style={{ textDecoration: "none" }}
+              to="/holdings"
+              onClick={() => handleMenuClick(2)}
+            >
+              <p
+                className={selectedMenu === 2 ? menuClassWithActive : menuClass}
+              >
+                Holdings
+              </p>
             </Link>
           </li>
           <li>
-            <Link style={{ textDecoration: "none" }} to="/positions">
-              <p className={menuClass}>Positions</p>
+            <Link
+              style={{ textDecoration: "none" }}
+              to="/positions"
+              onClick={() => handleMenuClick(3)}
+            >
+              <p
+                className={selectedMenu === 3 ? menuClassWithActive : menuClass}
+              >
+                Positions
+              </p>
             </Link>
           </li>
           <li>
-            <Link style={{ textDecoration: "none" }} to="/funds">
-              <p className={menuClass}>Funds</p>
+            <Link
+              style={{ textDecoration: "none" }}
+              to="/funds"
+              onClick={() => handleMenuClick(4)}
+            >
+              <p
+                className={selectedMenu === 4 ? menuClassWithActive : menuClass}
+              >
+                Funds
+              </p>
             </Link>
           </li>
           <li>
-            <Link style={{ textDecoration: "none" }} to="/apps">
-              <p className={menuClass}>Apps</p>
+            <Link
+              style={{ textDecoration: "none" }}
+              to="/apps"
+              onClick={() => handleMenuClick(5)}
+            >
+              <p
+                className={selectedMenu === 5 ? menuClassWithActive : menuClass}
+              >
+                Apps
+              </p>
             </Link>
           </li>
         </ul>
