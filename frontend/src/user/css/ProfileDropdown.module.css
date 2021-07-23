@@ -1,0 +1,74 @@
+.container {
+  width: 15%;
+  box-shadow: 0px 0px 4px 2px rgb(236, 235, 235);
+  position: absolute;
+  top: calc(10vh + 6px);
+  right: 30px;
+  background: #fff;
+}
+
+.header {
+  padding: 5% 6%;
+}
+
+.header h4 {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.header p {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: #9b9b9b;
+}
+
+.container hr {
+  border: none;
+  background: #d1d1d1;
+  height: 1px;
+  margin: 10px 0;
+}
+
+.settings {
+  display: flex;
+  align-items: center;
+  padding: 0 6px;
+}
+
+.settings h6,
+.menu h6 {
+  color: rgb(54, 54, 54);
+  font-size: 0.8rem;
+  font-weight: 300;
+}
+
+.settings h6 span {
+  color: #ccc;
+}
+
+.icon {
+  transform: scale(0.8);
+  color: rgb(70, 70, 70);
+  margin-right: 6px;
+}
+
+.menus {
+  padding: 0 6px;
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+/* sudo selector */
+.container:hover {
+  cursor: pointer;
+}
+
+.menu:hover {
+    background-color: rgb(247, 247, 247);
+}

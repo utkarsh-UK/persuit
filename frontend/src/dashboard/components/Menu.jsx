@@ -4,12 +4,18 @@ import classes from "../css/Menu.module.css";
 
 import logoImage from "../../images/logo.png";
 import { Link } from "react-router-dom";
+import ProfileDropdown from "../../user/components/ProfileDropdown";
 
 const Menu = () => {
   const [selectedMenu, setSelectedMenu] = useState(0);
+  const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
 
   const handleMenuClick = (index) => {
     setSelectedMenu(index);
+  };
+
+  const handleProfileClick = (index) => {
+    setIsProfileDropdownOpen(!isProfileDropdownOpen);
   };
 
   const menuClass = `${classes.menu}`;
@@ -100,10 +106,11 @@ const Menu = () => {
           </li>
         </ul>
         <hr />
-        <div className={classes.profile}>
+        <div className={classes.profile} onClick={handleProfileClick}>
           <div className={classes.avatar}>UK</div>
           <p className={classes.username}>AT9190</p>
         </div>
+        {isProfileDropdownOpen && <ProfileDropdown />}
       </div>
     </div>
   );

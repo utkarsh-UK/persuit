@@ -79,6 +79,10 @@ hr {
   color: rgb(245, 104, 52);
 }
 
+.profile:hover {
+  cursor: pointer;
+}
+
 .profile:hover .username {
   cursor: pointer;
   color: rgb(223, 91, 43);

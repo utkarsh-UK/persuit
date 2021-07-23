@@ -175,6 +175,7 @@
 
 .list li:hover {
   cursor: move;
+  background-color: #f3f3f3;
 }
 
 .list li:hover > .actions {
