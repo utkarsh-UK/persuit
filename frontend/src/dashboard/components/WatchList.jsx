@@ -1,9 +1,12 @@
-import React from "react";
 import {
+  BarChartOutlined, DeleteOutline,
   KeyboardArrowDown,
   KeyboardArrowUp,
-  SettingsOutlined,
+  List,
+  MoreHoriz,
+  SettingsOutlined
 } from "@material-ui/icons";
+import React from "react";
 
 import { watchlist } from "../../core/data";
 
@@ -41,6 +44,28 @@ const WatchList = () => {
                 <span className={classes.price}> {stock.price} </span>
               </div>
             </div>
+            <span className={classes.actions}>
+              <span>
+                <button className={classes.buy}>B</button>
+              </span>
+              <span>
+                <button className={classes.sell}>S</button>
+              </span>
+              <span>
+                <button className={classes.action}>
+                  <List className={classes.icon} />
+                </button>
+              </span>
+              <span>
+                <button className={classes.action}> <BarChartOutlined className={classes.icon} /> </button>
+              </span>
+              <span>
+                <button className={classes.action}> <DeleteOutline className={classes.icon} /> </button>
+              </span>
+              <span>
+                <button className={classes.action}> <MoreHoriz className={classes.icon}  /> </button>
+              </span>
+            </span>
           </li>
         ))}
       </ul>
