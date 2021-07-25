@@ -1,15 +1,15 @@
 import {
-  BarChartOutlined, DeleteOutline,
+  BarChartOutlined,
+  DeleteOutline,
   KeyboardArrowDown,
   KeyboardArrowUp,
   List,
   MoreHoriz,
-  SettingsOutlined
+  SettingsOutlined,
 } from "@material-ui/icons";
-import React from "react";
-
+import React, { useContext, useState } from "react";
 import { watchlist } from "../../core/data";
-
+import GeneralContext from "../../store/general-context";
 import classes from "../css/WatchList.module.css";
 
 const WatchList = () => {
@@ -20,7 +20,7 @@ const WatchList = () => {
           type="text"
           name="search"
           id="search"
-          placeholder="Search eg:infy bse, nifty fut weekly, gold mcx"
+          placeholder="Search eg:infy, bse, nifty fut weekly, gold mcx"
           className={classes.search}
         />
         <span className={classes.counts}> 9 / 50</span>
@@ -28,45 +28,7 @@ const WatchList = () => {
 
       <ul className={classes["list"]}>
         {watchlist.map((stock, index) => (
-          <li key={index}>
-            <div className={classes.item}>
-              <p className={stock.isDown ? `${classes.down}` : `${classes.up}`}>
-                {" "}
-                {stock.name}{" "}
-              </p>
-              <div className={classes["item-info"]}>
-                <span className={classes.percent}> {stock.percent} </span>
-                {stock.isDown ? (
-                  <KeyboardArrowDown className={classes.down} />
-                ) : (
-                  <KeyboardArrowUp className={classes.up} />
-                )}
-                <span className={classes.price}> {stock.price} </span>
-              </div>
-            </div>
-            <span className={classes.actions}>
-              <span>
-                <button className={classes.buy}>B</button>
-              </span>
-              <span>
-                <button className={classes.sell}>S</button>
-              </span>
-              <span>
-                <button className={classes.action}>
-                  <List className={classes.icon} />
-                </button>
-              </span>
-              <span>
-                <button className={classes.action}> <BarChartOutlined className={classes.icon} /> </button>
-              </span>
-              <span>
-                <button className={classes.action}> <DeleteOutline className={classes.icon} /> </button>
-              </span>
-              <span>
-                <button className={classes.action}> <MoreHoriz className={classes.icon}  /> </button>
-              </span>
-            </span>
-          </li>
+          <WatchListItem stock={stock} key={index} />
         ))}
       </ul>
 
@@ -86,3 +48,77 @@ const WatchList = () => {
 };
 
 export default WatchList;
+
+const WatchListItem = ({ stock }) => {
+  const [showWatchlistActions, setShowWatchlistActions] = useState(false);
+
+  const handleListMouseEnter = (e) => {
+    setShowWatchlistActions(true);
+  };
+
+  const handleListMouseLeave = (e) => {
+    setShowWatchlistActions(false);
+  };
+
+  return (
+    <li onMouseEnter={handleListMouseEnter} onMouseLeave={handleListMouseLeave}>
+      <div className={classes.item}>
+        <p className={stock.isDown ? `${classes.down}` : `${classes.up}`}>
+          {" "}
+          {stock.name}{" "}
+        </p>
+        <div className={classes["item-info"]}>
+          <span className={classes.percent}> {stock.percent} </span>
+          {stock.isDown ? (
+            <KeyboardArrowDown className={classes.down} />
+          ) : (
+            <KeyboardArrowUp className={classes.up} />
+          )}
+          <span className={classes.price}> {stock.price} </span>
+        </div>
+      </div>
+      {showWatchlistActions && <WatchListActions uid={stock.name} />}
+    </li>
+  );
+};
+
+const WatchListActions = ({ uid }) => {
+  const generalContext = useContext(GeneralContext);
+
+  const handleBuyClick = () => {
+    generalContext.openBuyWindow(uid);
+  };
+
+  return (
+    <span className={classes.actions}>
+      <span>
+        <button className={classes.buy} onClick={handleBuyClick}>
+          B
+        </button>
+      </span>
+      <span>
+        <button className={classes.sell}>S</button>
+      </span>
+      <span>
+        <button className={classes.action}>
+          <List className={classes.icon} />
+        </button>
+      </span>
+      <span>
+        <button className={classes.action}>
+          <BarChartOutlined className={classes.icon} />
+        </button>
+      </span>
+      <span>
+        <button className={classes.action}>
+          <DeleteOutline className={classes.icon} />
+        </button>
+      </span>
+      <span>
+        <button className={classes.action}>
+          <MoreHoriz className={classes.icon} />
+        </button>
+      </span>
+    </span>
+  );
+};

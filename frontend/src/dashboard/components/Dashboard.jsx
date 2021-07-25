@@ -16,8 +16,12 @@ const Dashboard = () => {
     document.title = "Dashboard / Persuit";
   }, []);
 
+
   return (
-    <div className={classes.container}>
+    <div
+      className={classes.container}
+    
+    >
       <WatchList />
       <div className={classes.content}>
         <Route exact path="/" component={Summary} />

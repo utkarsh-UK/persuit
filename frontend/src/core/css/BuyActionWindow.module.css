@@ -1,0 +1,17 @@
+.container {
+  width: 40%;
+  height: 60%;
+  background: rgb(245, 245, 245);
+  color: #4184f3;
+  position: absolute;
+  bottom: 0;
+  left: 35%;
+  cursor: move;
+  padding: 2%;
+  box-sizing: border-box;
+  z-index: 100;
+}
+
+.dragging {
+  opacity: 0;
+}

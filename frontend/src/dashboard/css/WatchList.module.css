@@ -197,6 +197,7 @@
 .watchlist-number ul li:hover {
   color: rgb(245, 104, 52);
   cursor: pointer;
+  background: rgb(243, 243, 243);
 }
 
 .settings:hover {
@@ -206,15 +207,3 @@
 .action:hover {
   background-color: rgb(212, 212, 212);
 }
-
-/* 
-.watchlist-number ul li:hover::before {
-  content: "";
-  background: rgb(243, 243, 243);
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: -1;
-} */
