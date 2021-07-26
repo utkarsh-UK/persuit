@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import GeneralContext from "../../store/general-context";
 
 import classes from "../css/BuyActionWindow.module.css";
@@ -42,8 +43,94 @@ const BuyActionWindow = ({ uid }) => {
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
     >
-      <h3>Hello {uid}</h3>
-      <button onClick={handleCancelClick}>Cancel</button>
+      <div className={classes.header}>
+        <h3>
+          Buy {uid} <span>NSE</span> x 1 Qty{" "}
+        </h3>
+
+        <div className={classes["market-options"]}>
+          <label htmlFor="bse">
+            <input type="radio" name="market" id="bse" value="bse" />
+            BSE ₹212.75
+          </label>
+
+          <label htmlFor="nse">
+            <input type="radio" name="market" id="nse" value="nse" /> NSE
+            ₹212.70
+          </label>
+        </div>
+      </div>
+
+      <div className={classes.tab}>
+        <button>Regular</button>
+        <button>Cover</button>
+        <button>AMO</button>
+      </div>
+
+      <div className={classes["regular-order"]}>
+        <div className={classes["order-validity"]}>
+          <label>
+            <input type="radio" name="order_validity" id="bse" value="bse" />
+            Intraday <span>MIS</span>
+          </label>
+
+          <label>
+            <input type="radio" name="order_validity" id="nse" value="nse" />{" "}
+            Longterm <span>CNC</span>
+          </label>
+        </div>
+
+        <div className={classes["inputs"]}>
+          <input type="number" name="qty" id="qty" value="1" />
+          <input
+            type="number"
+            name="price"
+            id="price"
+            step="0.01"
+            value="137.60"
+          />
+          <input type="number" name="trigger" id="trigger" disabled />
+        </div>
+
+        <div className={classes["options"]}>
+          <span>More</span>
+
+          <div className={classes["sub-order-type"]}>
+            <label>
+              <input type="radio" name="sub_order_type" />
+              Market
+            </label>
+
+            <label>
+              <input type="radio" name="sub_order_type" /> Limit
+            </label>
+          </div>
+
+          <div className={classes["stop-loss-type"]}>
+            <label>
+              <input type="radio" name="stop_loss_type" id="bse" value="bse" />
+              SL
+            </label>
+
+            <label>
+              <input type="radio" name="stop_loss_type" id="nse" value="nse" />{" "}
+              SL-M
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div className={classes.buttons}>
+        <span>Margin required ₹140.65</span>
+        <div>
+          <Link className={`${classes["btn"]} ${classes["btn-blue"]}`}>
+            Buy
+          </Link>
+          <Link className={`${classes["btn"]} ${classes["btn-grey"]}`} onClick={handleCancelClick}>
+            Cancel
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };
