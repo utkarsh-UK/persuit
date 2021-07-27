@@ -50,13 +50,19 @@ const BuyActionWindow = ({ uid }) => {
 
         <div className={classes["market-options"]}>
           <label htmlFor="bse">
-            <input type="radio" name="market" id="bse" value="bse" />
+            <input type="radio" name="market" id="bse" defaultValue="bse" />
             BSE ₹212.75
           </label>
 
           <label htmlFor="nse">
-            <input type="radio" name="market" id="nse" value="nse" /> NSE
-            ₹212.70
+            <input
+              type="radio"
+              name="market"
+              id="nse"
+              defaultValue="nse"
+              checked
+            />{" "}
+            NSE ₹212.70
           </label>
         </div>
       </div>
@@ -75,19 +81,25 @@ const BuyActionWindow = ({ uid }) => {
           </label>
 
           <label>
-            <input type="radio" name="order_validity" id="nse" value="nse" />{" "}
+            <input
+              type="radio"
+              name="order_validity"
+              id="nse"
+              value="nse"
+              checked
+            />{" "}
             Longterm <span>CNC</span>
           </label>
         </div>
 
         <div className={classes["inputs"]}>
-          <input type="number" name="qty" id="qty" value="1" />
+          <input type="number" name="qty" id="qty" defaultValue="1" />
           <input
             type="number"
             name="price"
             id="price"
             step="0.01"
-            value="137.60"
+            defaultValue="137.60"
           />
           <input type="number" name="trigger" id="trigger" disabled />
         </div>
@@ -102,7 +114,7 @@ const BuyActionWindow = ({ uid }) => {
             </label>
 
             <label>
-              <input type="radio" name="sub_order_type" /> Limit
+              <input type="radio" name="sub_order_type" checked /> Limit
             </label>
           </div>
 
@@ -113,7 +125,13 @@ const BuyActionWindow = ({ uid }) => {
             </label>
 
             <label>
-              <input type="radio" name="stop_loss_type" id="nse" value="nse" />{" "}
+              <input
+                type="radio"
+                name="stop_loss_type"
+                id="nse"
+                value="nse"
+                
+              />{" "}
               SL-M
             </label>
           </div>
@@ -123,10 +141,14 @@ const BuyActionWindow = ({ uid }) => {
       <div className={classes.buttons}>
         <span>Margin required ₹140.65</span>
         <div>
-          <Link className={`${classes["btn"]} ${classes["btn-blue"]}`}>
+          <Link to="/" className={`${classes["btn"]} ${classes["btn-blue"]}`}>
             Buy
           </Link>
-          <Link className={`${classes["btn"]} ${classes["btn-grey"]}`} onClick={handleCancelClick}>
+          <Link
+            to=""
+            className={`${classes["btn"]} ${classes["btn-grey"]}`}
+            onClick={handleCancelClick}
+          >
             Cancel
           </Link>
         </div>

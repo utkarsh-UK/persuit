@@ -10,6 +10,7 @@
   box-sizing: border-box;
   z-index: 100;
   border-radius: var(--radius);
+  border: 1px solid rgb(238, 238, 238);
 }
 
 .dragging {
@@ -43,7 +44,11 @@
 }
 
 .market-options label,
-.order-validity label input {
+.order-validity label input,
+.sub-order-type label,
+.sub-order-type label input,
+.stop-loss-type label,
+.stop-loss-type label input {
   margin-right: 6px;
   cursor: pointer;
 }
@@ -75,6 +80,7 @@
 .regular-order {
   padding: 16px 26px;
   background-color: #fff;
+  padding-bottom: 30px;
 }
 
 .regular-order label {

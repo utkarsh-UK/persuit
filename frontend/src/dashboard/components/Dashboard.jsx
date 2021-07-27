@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { Route } from "react-router-dom";
 
+import { GeneralContextProvider } from "../../store/general-context";
+
 import classes from "../css/Dashboard.module.css";
 import Apps from "./Apps";
 import Funds from "./Funds";
@@ -16,13 +18,11 @@ const Dashboard = () => {
     document.title = "Dashboard / Persuit";
   }, []);
 
-
   return (
-    <div
-      className={classes.container}
-    
-    >
-      <WatchList />
+    <div className={classes.container}>
+      <GeneralContextProvider>
+        <WatchList />
+      </GeneralContextProvider>
       <div className={classes.content}>
         <Route exact path="/" component={Summary} />
         <Route path="/orders" component={Orders} />
@@ -35,4 +35,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default React.memo(Dashboard);

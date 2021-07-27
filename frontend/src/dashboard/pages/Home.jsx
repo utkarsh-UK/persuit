@@ -1,6 +1,4 @@
-import React, { useEffect } from "react";
-
-import { GeneralContextProvider } from "../../store/general-context";
+import React, { Fragment, useEffect } from "react";
 
 import Dashboard from "../components/Dashboard";
 import TopBar from "../components/TopBar";
@@ -25,11 +23,11 @@ const Home = () => {
   }, []);
 
   return (
-    <GeneralContextProvider>
+    <Fragment>
       <TopBar />
       <Dashboard />
-    </GeneralContextProvider>
+    </Fragment>
   );
 };
 
-export default Home;
+export default React.memo(Home);
