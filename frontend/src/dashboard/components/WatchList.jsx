@@ -1,3 +1,4 @@
+import { Tooltip, Grow } from "@material-ui/core";
 import {
   BarChartOutlined,
   DeleteOutline,
@@ -34,14 +35,62 @@ const WatchList = () => {
 
       <div className={classes["watchlist-number"]}>
         <ul>
-          <li>1</li>
-          <li>2</li>
-          <li>3</li>
-          <li>4</li>
-          <li>5</li>
+          <Tooltip
+            title="Companies"
+            placement="top"
+            arrow
+            aria-label="buy"
+            TransitionComponent={Grow}
+          >
+            <li>1</li>
+          </Tooltip>
+          <Tooltip
+            title="Bank"
+            placement="top"
+            arrow
+            aria-label="buy"
+            TransitionComponent={Grow}
+          >
+            <li>2</li>
+          </Tooltip>
+          <Tooltip
+            title="Indices"
+            placement="top"
+            arrow
+            aria-label="buy"
+            TransitionComponent={Grow}
+          >
+            <li>3</li>
+          </Tooltip>
+          <Tooltip
+            title="Hospitality"
+            placement="top"
+            arrow
+            aria-label="buy"
+            TransitionComponent={Grow}
+          >
+            <li>4</li>
+          </Tooltip>
+          <Tooltip
+            title="First Stocks"
+            placement="top"
+            arrow
+            aria-label="buy"
+            TransitionComponent={Grow}
+          >
+            <li>5</li>
+          </Tooltip>
         </ul>
 
-        <SettingsOutlined className={classes.settings} />
+        <Tooltip
+          title="Marketwatch settings"
+          placement="left"
+          arrow
+          aria-label="buy"
+          TransitionComponent={Grow}
+        >
+          <SettingsOutlined className={classes.settings} />
+        </Tooltip>
       </div>
     </div>
   );
@@ -92,32 +141,80 @@ const WatchListActions = ({ uid }) => {
   return (
     <span className={classes.actions}>
       <span>
-        <button className={classes.buy} onClick={handleBuyClick}>
-          B
-        </button>
+        <Tooltip
+          title="Buy (B)"
+          placement="top"
+          arrow
+          aria-label="buy"
+          TransitionComponent={Grow}
+        >
+          <button className={classes.buy} onClick={handleBuyClick}>
+            B
+          </button>
+        </Tooltip>
       </span>
       <span>
-        <button className={classes.sell}>S</button>
+        <Tooltip
+          title="Sell (S)"
+          placement="top"
+          arrow
+          aria-label="sell"
+          TransitionComponent={Grow}
+        >
+          <button className={classes.sell}>S</button>
+        </Tooltip>
       </span>
       <span>
-        <button className={classes.action}>
-          <List className={classes.icon} />
-        </button>
+        <Tooltip
+          title="Market depth (D)"
+          placement="top"
+          arrow
+          aria-label="depth"
+          TransitionComponent={Grow}
+        >
+          <button className={classes.action}>
+            <List className={classes.icon} />
+          </button>
+        </Tooltip>
       </span>
       <span>
-        <button className={classes.action}>
-          <BarChartOutlined className={classes.icon} />
-        </button>
+        <Tooltip
+          title="Chart (C)"
+          placement="top"
+          arrow
+          aria-label="chart"
+          TransitionComponent={Grow}
+        >
+          <button className={classes.action}>
+            <BarChartOutlined className={classes.icon} />
+          </button>
+        </Tooltip>
       </span>
       <span>
-        <button className={classes.action}>
-          <DeleteOutline className={classes.icon} />
-        </button>
+        <Tooltip
+          title="Delete (del)"
+          placement="top"
+          arrow
+          aria-label="delete"
+          TransitionComponent={Grow}
+        >
+          <button className={classes.action}>
+            <DeleteOutline className={classes.icon} />
+          </button>
+        </Tooltip>
       </span>
       <span>
-        <button className={classes.action}>
-          <MoreHoriz className={classes.icon} />
-        </button>
+        <Tooltip
+          title="More"
+          placement="top"
+          arrow
+          aria-label="more"
+          TransitionComponent={Grow}
+        >
+          <button className={classes.action}>
+            <MoreHoriz className={classes.icon} />
+          </button>
+        </Tooltip>
       </span>
     </span>
   );

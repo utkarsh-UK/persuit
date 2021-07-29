@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+
 import GeneralContext from "../../store/general-context";
 
 import classes from "../css/BuyActionWindow.module.css";
@@ -93,15 +94,24 @@ const BuyActionWindow = ({ uid }) => {
         </div>
 
         <div className={classes["inputs"]}>
-          <input type="number" name="qty" id="qty" defaultValue="1" />
-          <input
-            type="number"
-            name="price"
-            id="price"
-            step="0.01"
-            defaultValue="137.60"
-          />
-          <input type="number" name="trigger" id="trigger" disabled />
+          <fieldset>
+            <legend>Qty.</legend>
+            <input type="number" name="qty" id="qty" defaultValue="1" />
+          </fieldset>
+          <fieldset>
+            <legend>Price</legend>
+            <input
+              type="number"
+              name="price"
+              id="price"
+              step="0.05"
+              defaultValue="137.60"
+            />
+          </fieldset>
+          <fieldset disabled>
+            <legend>Trigger price</legend>
+            <input type="number" name="trigger" id="trigger" disabled />
+          </fieldset>
         </div>
 
         <div className={classes["options"]}>
@@ -125,13 +135,7 @@ const BuyActionWindow = ({ uid }) => {
             </label>
 
             <label>
-              <input
-                type="radio"
-                name="stop_loss_type"
-                id="nse"
-                value="nse"
-                
-              />{" "}
+              <input type="radio" name="stop_loss_type" id="nse" value="nse" />{" "}
               SL-M
             </label>
           </div>

@@ -1,7 +1,7 @@
 .container {
   --radius: 4px;
   width: 40%;
-  height: 60%;
+  height: 63%;
   background: rgb(245, 245, 245);
   position: absolute;
   bottom: 0;
@@ -102,19 +102,35 @@
 .inputs {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   margin-top: 16px;
-  margin-left: 16px;
   margin-bottom: 16px;
 }
 
-.inputs input {
-  margin-right: 8px;
-  max-width: 150px;
-  min-height: 40px;
-  padding: 0 12px;
+.inputs fieldset {
+  max-width: 120px;
   box-sizing: border-box;
   border: 0.7px solid #ddd;
+  margin-right: 8px;
+}
+
+.inputs fieldset legend {
+  margin-left: 10px;
+  font-size: 0.8rem;
+  padding: 0 4px;
+}
+
+.inputs fieldset:last-of-type legend {
+  color: #ddd;
+}
+
+.inputs fieldset input {
+  border: none;
+  margin-right: 8px;
+  max-width: 130px;
+  min-height: 35px;
+  padding: 0 12px;
+  box-sizing: border-box;
   font-size: 1.1rem;
 }
 
@@ -175,14 +191,23 @@
   background-color: #4184f3;
 }
 
-.inputs input:focus {
+.inputs fieldset:focus {
   outline: none;
   border: 0.7px solid rgb(49, 49, 49);
   border-radius: 2px;
 }
 
-.inputs input:disabled {
+.inputs fieldset input:focus {
+  outline: none;
+}
+
+.inputs fieldset input:focus {
+  outline: none;
+}
+
+.inputs fieldset input:disabled {
   cursor: not-allowed;
+  background-color: transparent;
 }
 
 .btn-blue:hover {
