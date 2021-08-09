@@ -1,17 +1,26 @@
 import {
-    AdjustOutlined,
-    ExitToAppOutlined,
-    GamepadOutlined,
-    HelpOutlined,
-    PermIdentityOutlined,
-    PersonAddOutlined,
-    ThumbsUpDownOutlined
+  AdjustOutlined,
+  ExitToAppOutlined,
+  GamepadOutlined,
+  HelpOutlined,
+  PermIdentityOutlined,
+  PersonAddOutlined,
+  ThumbsUpDownOutlined,
 } from "@material-ui/icons";
 import React from "react";
+import { useState } from "react";
+import { Redirect } from "react-router-dom";
+import { signout } from "../../auth/helpers";
 import classes from "../css/ProfileDropdown.module.css";
 
-
 const ProfileDropdown = () => {
+  const [isLoggedOut, setIsLoggedOut] = useState(false);
+
+  const handleLogoutClick = () => {
+    signout()
+      .then((_) => setIsLoggedOut(true))
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className={classes.container}>
@@ -59,11 +68,13 @@ const ProfileDropdown = () => {
           <HelpOutlined className={classes.icon} />
           <h6>Help</h6>
         </div>
-        <div className={classes.menu}>
+        <div className={classes.menu} onClick={handleLogoutClick}>
           <ExitToAppOutlined className={classes.icon} />
           <h6>Logout</h6>
         </div>
       </div>
+
+      {isLoggedOut && <Redirect to="/" />}
     </div>
   );
 };

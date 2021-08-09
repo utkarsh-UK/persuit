@@ -6,7 +6,7 @@ import logoImage from "../../images/logo.png";
 import { Link } from "react-router-dom";
 import ProfileDropdown from "../../user/components/ProfileDropdown";
 
-const Menu = () => {
+const Menu = (props) => {
   const [selectedMenu, setSelectedMenu] = useState(0);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
 
@@ -110,7 +110,7 @@ const Menu = () => {
           <div className={classes.avatar}>UK</div>
           <p className={classes.username}>AT9190</p>
         </div>
-        {isProfileDropdownOpen && <ProfileDropdown />}
+        {isProfileDropdownOpen && <ProfileDropdown history={props.history} />}
       </div>
     </div>
   );

@@ -5,7 +5,7 @@ import classes from "../css/Login.module.css";
 
 import logoImage from "../../images/logo.png";
 import AuthFooter from "../components/AuthFooter";
-import { signin } from "../helpers";
+import { authenticate, signin } from "../helpers";
 import { Fragment } from "react";
 
 const initialState = {
@@ -15,7 +15,7 @@ const initialState = {
   didRedirect: false,
 };
 
-const Login = ({ history }) => {
+const Login = () => {
   const [authState, setAuthState] = useState(initialState);
 
   const userIdRef = useRef();
@@ -34,6 +34,7 @@ const Login = ({ history }) => {
 
     signin({ user_id: userID, password })
       .then((data) => {
+        console.log(data);
         if (!data.success) {
           setAuthState((prevAuth) => ({
             ...prevAuth,
@@ -44,13 +45,16 @@ const Login = ({ history }) => {
           userIdRef.current.value = "";
           passwordRef.current.value = "";
         } else {
-          setAuthState((prevAuth) => ({
-            ...prevAuth,
-            isSuccess: true,
-            loading: false,
-            error: data.message,
-            didRedirect: true,
-          }));
+          const { token, user_id } = data.data;
+          authenticate({ token, user_id }, () => {
+            setAuthState((prevAuth) => ({
+              ...prevAuth,
+              isSuccess: true,
+              loading: false,
+              error: data.message,
+              didRedirect: true,
+            }));
+          });
         }
       })
       .catch((err) => {
