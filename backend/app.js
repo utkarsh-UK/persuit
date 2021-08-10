@@ -5,15 +5,17 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 
 const authRoutes = require("./routes/auth");
+const marketRoutes = require("./routes/market");
 
 const app = express();
 
 // middlewares
 app.use(express.json());
-app.use(cors());
+app.use(cors({credentials: true , origin: true}));
 
 // app routes
 app.use("/api", authRoutes);
+app.use("/api", marketRoutes);
 
 const port = process.env.PORT || 5500;
 

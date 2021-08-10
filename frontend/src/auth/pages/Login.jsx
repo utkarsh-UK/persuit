@@ -34,7 +34,6 @@ const Login = () => {
 
     signin({ user_id: userID, password })
       .then((data) => {
-        console.log(data);
         if (!data.success) {
           setAuthState((prevAuth) => ({
             ...prevAuth,
